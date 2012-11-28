@@ -35,9 +35,8 @@ gem 'rake',  '~> 10.0.0'
 # Deploy with Capistrano
 gem 'capistrano'
 gem 'capistrano_colors'
-gem 'rvm-capistrano'
+# gem 'rvm-capistrano'
 # To use debugger
 # gem 'debugger'
-
 
 gem 'passenger'
