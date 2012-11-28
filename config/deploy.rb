@@ -18,6 +18,8 @@ set :user, "dmitry"
 default_run_options[:pty] = true
 set :deploy_to, "/home/#{user}/app/"
 set :use_sudo, false
+set :shell, '/usr/bin/bash'
+
 
 set :deploy_via, :remote_cache
 # set :deploy_via, :copy
