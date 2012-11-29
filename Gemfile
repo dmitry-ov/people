@@ -7,6 +7,9 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 
+
+gem 'bundle'
+
 gem 'delayed_job'#, git: 'git://github.com/collectiveidea/delayed_job.git'
 gem 'delayed_job_active_record'
 
@@ -35,7 +38,7 @@ gem 'rake',  '~> 10.0.0'
 # Deploy with Capistrano
 gem 'capistrano'
 gem 'capistrano_colors'
-# gem 'rvm-capistrano'
+gem 'rvm-capistrano'
 # To use debugger
 # gem 'debugger'
 
