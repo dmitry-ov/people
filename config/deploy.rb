@@ -19,8 +19,6 @@ default_run_options[:pty] = true
 set :deploy_to, "/home/#{user}/app/"
 set :use_sudo, false
 
-# Add RVM's lib directory to the load path.
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 # RVM's capistrano plugin.    
 set :rvm_ruby_string, "1.9.3-p327-perf"
 set :rvm_type, :user 
