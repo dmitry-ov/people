@@ -5,12 +5,14 @@ rvm reload
 rvm get head
 rvm install 1.9.3 -n perf --patch falcon
 rvm use 1.9.3-perf --default
+rvm use 1.9.3-p327-perf@global
 gem install bundle
 
 rvm reload
 
 gem install passenger
 rvmsudo passenger-install-nginx-module
+# ubuntu 1gb pause
 git clone git://github.com/vkurennov/rails-nginx-passenger-ubuntu.git
 
 sudo mv rails-nginx-passenger-ubuntu/nginx/nginx /etc/init.d/nginx

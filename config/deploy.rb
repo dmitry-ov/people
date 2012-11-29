@@ -6,10 +6,10 @@ set :scm, :git
 set :repository, "git://github.com/ovcharenkodi/people.git"
 
 # 1gb Ubuntu server
-# server "81.177.142.175", :web, :app, :db, :primary => true
+server "81.177.142.175", :web, :app, :db, :primary => true
 
 # infobox ubuntu server
-server "109.120.166.170", :web, :app, :db, :primary => true
+# server "109.120.166.170", :web, :app, :db, :primary => true
 
 ssh_options[:port] = 22
 ssh_options[:keys] = "/home/dmitry/.ssh/id_rsa"
