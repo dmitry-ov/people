@@ -27,6 +27,7 @@ group :assets do
 end
 gem 'jquery-rails'
 gem 'rake',  '~> 10.0.0'
+gem  'libv8'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
