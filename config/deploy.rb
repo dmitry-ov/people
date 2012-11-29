@@ -30,4 +30,11 @@ set :copy_strategy, :export
 namespace :deploy do
 	task :start do ; end
 	task :stop do ; end
+	
+	task :rm do
+	  run "rm -rf vendor/cache"
+	end
+
 end
+
+before "bundle:install", "deploy:rm"
