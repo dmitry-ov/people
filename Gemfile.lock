@@ -145,7 +145,6 @@ DEPENDENCIES
   delayed_job_active_record
   execjs
   jquery-rails
-  libv8 (~> 3.3.10.4)
   passenger
   rails (= 3.2.8)
   rake (~> 10.0.0)
