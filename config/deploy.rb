@@ -31,10 +31,10 @@ namespace :deploy do
 	task :start do ; end
 	task :stop do ; end
 	
-	task :rm do
-	  run "rm -rf vendor/cache"
-	end
+#	task :rm do
+#	  run "rm -rf vendor/cache"
+#	end
 
 end
 
-before "bundle:install", "deploy:rm"
+#before "bundle:install", "deploy:rm"
