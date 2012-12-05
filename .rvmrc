@@ -1,0 +1,4 @@
+#/bin/bash
+
+rvm gemset use people
+

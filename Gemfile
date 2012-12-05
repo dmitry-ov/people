@@ -24,6 +24,7 @@ group :development do
 	gem 'capistrano_colors'
 	gem 'rvm-capistrano'
 	gem 'passenger'
+	gem 'rspec-rails'
 end
 
 gem 'jquery-rails'
