@@ -14,7 +14,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-	 # gem "libv8", "~> 3.3.10.4"
+	# gem "libv8", "~> 3.3.10.4"
   # gem 'johnson'
   gem 'uglifier', '>= 1.0.3'
 end
@@ -24,7 +24,10 @@ group :development do
 	gem 'capistrano_colors'
 	gem 'rvm-capistrano'
 	gem 'passenger'
-	gem 'rspec-rails'
+end
+
+group :test, :development do
+  gem "rspec-rails"
 end
 
 gem 'jquery-rails'
