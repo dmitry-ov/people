@@ -28,11 +28,11 @@ describe Region do
 	  end
 	end
 
-	describe "valid" do  
-		it "should be valid" do
-			@region.name = 'moscow'
-			@region.id_vk = -100046
-			@region.save.should be_true
-		end
-	end
+  describe "valid" do  
+    it "should be valid" do
+      @region.name = 'moscow'
+      @region.id_vk = -100046
+      @region.save.should be_true
+    end
+  end
 end
