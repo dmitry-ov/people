@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
-gem 'sqlite3'
-gem 'bundle'
+# gem 'sqlite3'
+# gem 'bundle'
+gem 'activerecord-postgresql-adapter'
+
 
 gem 'delayed_job'#, git: 'git://github.com/collectiveidea/delayed_job.git'
 gem 'delayed_job_active_record'
