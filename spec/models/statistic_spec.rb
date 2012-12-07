@@ -11,4 +11,8 @@ describe Statistic do
 
   pending "validates_presents :hash"
 
+  pending "validates  :hash length/size"
+
+  # if size < 600 job must be reload"
+
 end

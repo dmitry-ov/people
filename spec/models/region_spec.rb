@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe Region do
   before :each do
     @region = Region.new
@@ -17,9 +16,8 @@ describe Region do
     end
   end
 
-
- pending "string name field"
-
+  pending "name field is string"
+  pending "if not string not saved"
 
   describe "id_vk" do
     it "should have id_vk" do
@@ -40,9 +38,10 @@ describe Region do
     it "should be valid" do
       @region.name = 'moscow'
       @region.id_vk = -100046
-      @region.save.should be_true
+      @region.valid?.should be_true
     end
-
+    
+    pending "not valid show errors"
     # >> p.valid?
     # => false
     # >> p.errors
