@@ -12,7 +12,7 @@ rvm reload
 
 gem install passenger
 rvmsudo passenger-install-nginx-module
-# ubuntu 1gb pause
+
 git clone git://github.com/vkurennov/rails-nginx-passenger-ubuntu.git
 
 sudo mv rails-nginx-passenger-ubuntu/nginx/nginx /etc/init.d/nginx
@@ -21,14 +21,20 @@ sudo chown root:root /etc/init.d/nginx
 sudo /etc/init.d/nginx restart
 
 
+
+
+
+
+
+
+
+
 # Виталий: ну я обычно делаю так:
 # на серваке ставлю gem passenger
 # затем запускаю rvmsudo passenger-install-nginx-module
 # этот модуль сам качает и устанаваливает nginx с нужными настройками
 
-
 # Дмитрий: да, но ruby у моего root нет вообще
-
 
 # Виталий: а причем здесть root и ruby?
 # passenger установит и скомпилит nginx, но пропишет путь к руби и к себе самому для твоего юзера
@@ -45,17 +51,13 @@ sudo /etc/init.d/nginx restart
 # и мой тебе совет - не надо это делать через рецепты капистрано, проще и быстрее сделать все на сервере
 # и по-моему, правильнее
 
-
 # Дмитрий: я правильно понимаю : при описаном тобой раскладе rvm будет установлен только у пользователя, а вэб сервер будет работать с правами рута ?
 
-
 # Виталий: не совсем, nginx будет установлен от рута, что и должно быть, но настроен он будет на использование руби и passenger из-под твоего пользоывателя
-
 
 # Дмитрий: аа
 # буду пробовать
 # скасибо за инструкцию:)
-
 
 # Виталий: ты всю инструкцию получил? :-)
 # а то у меня писалось, что ты отключался

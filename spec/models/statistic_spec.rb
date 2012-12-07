@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe Statistic do
+  before :each do
+    @statistic = Statistic.new
+  end
+
+  it "should have date" do
+    @statistic.should be_respond_to(:date) 
+  end
+
   pending "add foreign key from region"
 
   pending "validates_presents :region"
