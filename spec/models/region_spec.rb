@@ -12,21 +12,29 @@ describe Region do
     end
 
     it "should save value name" do
-      @region.name = "random first name"
-      @region.name.should == "random first name"
+      @region.name = "moscow"
+      @region.name.should == "moscow"
     end
   end
 
-    describe "id_vk" do
-      it "should have id_vk" do
-        @region.should be_respond_to(:id_vk) 
-      end
 
-      it "should save value id_vk" do
-        @region.id_vk = -100046
-        @region.id_vk.should == -100046
-      end
+ pending "string name field"
+
+
+  describe "id_vk" do
+    it "should have id_vk" do
+      @region.should be_respond_to(:id_vk) 
     end
+    
+    it "should save value id_vk" do
+      @region.id_vk = -100046
+      @region.id_vk.should == -100046
+    end
+    
+    pending "id_vk integer validate"
+    pending "get error if id_vk not integer"
+
+  end
 
   describe "valid" do  
     it "should be valid" do
@@ -34,5 +42,12 @@ describe Region do
       @region.id_vk = -100046
       @region.save.should be_true
     end
+
+    # >> p.valid?
+    # => false
+    # >> p.errors
+    # => {:name=>["can't be blank"]}
+    # p.errors
+
   end
 end
