@@ -14,6 +14,11 @@ gem install bundle
 rvm reload
 
 
+sudo apt-add-repository -y ppa:pitti/postgresql
+sudo apt-get -y update
+sudo apt-get -y install postgresql-9.2 libpq-dev
+
+
 gem install passenger
 rvmsudo passenger-install-nginx-module
 
