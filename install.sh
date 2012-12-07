@@ -4,11 +4,15 @@ curl -L https://get.rvm.io | bash -s stable
 rvm reload
 rvm get head
 rvm install 1.9.3 -n perf --patch falcon
-rvm use 1.9.3-perf --default
-rvm use 1.9.3-p327-perf@global
+rvm alias create default 1.9.3-p327-perf
+# rvm use 1.9.3-perf --default
+# rvm use 1.9.3-p327-perf@global
+rvm gemset use global
+
 gem install bundle
 
 rvm reload
+
 
 gem install passenger
 rvmsudo passenger-install-nginx-module
@@ -59,3 +63,4 @@ sudo /etc/init.d/nginx restart
 
 # Виталий: ты всю инструкцию получил? :-)
 # а то у меня писалось, что ты отключался
+
