@@ -7,15 +7,6 @@ describe Region do
   end
 
   describe "name" do
-    it "should have name" do
-      @region.should be_respond_to(:name) 
-    end
-
-    it "should save value name" do
-      @region.name = "Москва"
-      @region.name.should == "Москва"
-    end
-
     context "valid" do 
       before :each do
         @region.id_vk = 100046
@@ -46,19 +37,11 @@ describe Region do
   end
 
   describe "id_vk" do
-    it "should have id_vk" do
-      @region.should be_respond_to(:id_vk) 
-    end
-    
-    it "should save value id_vk" do
-      @region.id_vk = -100046
-      @region.id_vk.should == -100046
-    end
-      
     context "valid" do
       before :each do
         @region.name = "Ямало-Ненецкий"
       end   
+      
       it "integer value" do
         @region.id_vk = -100046
         @region.should be_valid
