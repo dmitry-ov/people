@@ -5,17 +5,41 @@ describe Statistic do
     @statistic = Statistic.new
   end
 
-  it "should have date" do
-    @statistic.should be_respond_to(:date) 
+  it "should not valid with only date" do
+    @statistic.date = DateTime.now
+    @statistic.should be_invalid
   end
 
-  pending "add foreign key from region"
-  pending "validates_presents :region"
-  pending "validates_associated :region"
-  pending "validates_presents :date"
-  pending "validates_presents :hash"
-  pending "validates  :hash length/size"
-  
-  # if size < 600 job must be reload"
+  it "should not valid with only hashvalue" do
+    @statistic.hashvalue = {"woman" => 110550}
+    @statistic.should be_invalid
+  end
 
+  it "should not valid with only date" do
+    @statistic.region = Region.first  
+    @statistic.should be_invalid
+  end
+
+  it "should valid with date and region" do
+    @statistic.date = DateTime.now
+    @statistic.region = Region.first
+    @statistic.should be_valid
+  end
+
+  it "should save value in db with date,region and hashvalue" do
+    @statistic = Statistic.new
+    @statistic.date = DateTime.now
+    @statistic.region = Region.first
+    @statistic.save
+    @statistic.hashvalue = {"woman_99" => 88888 }
+    @statistic.save.should be_true
+  end
+  
+    pending "validates  :hash  length/size = 600"
+  # if size < 600 job must be reload"
 end
+
+
+
+
+

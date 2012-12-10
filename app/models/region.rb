@@ -5,9 +5,11 @@ class Region < ActiveRecord::Base
 
   validates_presence_of :name, :id_vk
   validates :id_vk, :numericality => { :only_integer => true }
+  
   validates :name, 
     :format => {  
       :with => /[а-яА-Я ()-]/, 
       :message => "Допустимы только русские буквы" }
 
+  has_many :statistics
 end

@@ -1,5 +1,5 @@
 class AddHashvalueToStatistics < ActiveRecord::Migration
   def change
-    add_column :statistics, :hash, :hstore
+    add_column :statistics, :hashvalue, :hstore
   end
 end
