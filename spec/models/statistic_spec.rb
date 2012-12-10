@@ -34,8 +34,7 @@ describe Statistic do
     @statistic.hashvalue = {"woman_99" => 88888 }
     @statistic.save.should be_true
   end
-  
-    pending "validates  :hash  length/size = 600"
+      pending "validates  :hash  length/size = 600"
   # if size < 600 job must be reload"
 end
 
