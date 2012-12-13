@@ -75,6 +75,39 @@ ALTER SEQUENCE regions_id_seq OWNED BY regions.id;
 
 
 --
+-- Name: respond_logs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE respond_logs (
+    id integer NOT NULL,
+    responddate date,
+    region_id integer,
+    status text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: respond_logs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE respond_logs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: respond_logs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE respond_logs_id_seq OWNED BY respond_logs.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -127,6 +160,13 @@ ALTER TABLE ONLY regions ALTER COLUMN id SET DEFAULT nextval('regions_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY respond_logs ALTER COLUMN id SET DEFAULT nextval('respond_logs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY statistics ALTER COLUMN id SET DEFAULT nextval('statistics_id_seq'::regclass);
 
 
@@ -136,6 +176,14 @@ ALTER TABLE ONLY statistics ALTER COLUMN id SET DEFAULT nextval('statistics_id_s
 
 ALTER TABLE ONLY regions
     ADD CONSTRAINT regions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: respond_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY respond_logs
+    ADD CONSTRAINT respond_logs_pkey PRIMARY KEY (id);
 
 
 --
@@ -175,3 +223,5 @@ INSERT INTO schema_migrations (version) VALUES ('20121210083422');
 INSERT INTO schema_migrations (version) VALUES ('20121210093519');
 
 INSERT INTO schema_migrations (version) VALUES ('20121210094655');
+
+INSERT INTO schema_migrations (version) VALUES ('20121213114245');

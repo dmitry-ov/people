@@ -12,4 +12,6 @@ class Region < ActiveRecord::Base
       :message => "Допустимы только русские буквы" }
 
   has_many :statistics
+
+  has_many :respond_log
 end
