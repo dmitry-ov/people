@@ -23,17 +23,20 @@ describe RespondLog do
   end
   
   it "should clear log" do
-    before = RespondLog.all.size
+    RespondLog.create(:region_id => Region.first, :responddate => DateTime.now, :status => "report")
     RespondLog.clear 
-    (RespondLog.all.size - before).should == 0
+    RespondLog.all.size.should == 0
   end
 
-
-  pending "send mail. run every hour"
-  
-  pending "send log to e-mail's if exist"
-
-  pending "clear log action on page"
-
-
+  it "should send mail" do 
+    Mail.deliver do
+      to 'mikel@me.com'
+      from 'you@you.com'
+      subject 'testing'
+      body 'hello'
+    end
+    Mail::TestMailer.deliveries.length.should == 1
+    Mail::TestMailer.deliveries.first
+    Mail::TestMailer.deliveries.clear
+  end
 end
