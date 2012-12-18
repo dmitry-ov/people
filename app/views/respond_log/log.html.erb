@@ -1,2 +1,11 @@
-<h1>RespondLog#log</h1>
+<!-- <h1>RespondLog#log</h1>
 <p>Find me in app/views/respond_log/log.html.erb</p>
+-->
+
+<% @log.each do |l| %>
+  <p> 
+    <%= l.responddate %>
+    <%= l.region.name %> 
+    <%= l.status %> 
+  </p>
+<% end %>
