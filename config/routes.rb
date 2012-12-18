@@ -1,4 +1,6 @@
 People::Application.routes.draw do
+  get "respond_log/log"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
