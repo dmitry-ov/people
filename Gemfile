@@ -27,7 +27,7 @@ group :development do
 	gem 'capistrano_colors'
 	gem 'rvm-capistrano'
 	gem 'passenger'
-  gem 'thin'
+  #gem 'thin'
 end
 
 group :test, :development do

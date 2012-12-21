@@ -16,7 +16,7 @@ VkontakteApi.configure do |config|
   }  
 
   # HTTP verb for API methods (:get or :post)
-  # config.http_verb = :get
+  config.http_verb = :get
   
   # Logging parameters:
   # log everything through the rails logger

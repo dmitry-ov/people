@@ -1,0 +1,20 @@
+account: 
+  secret_token : 7f0b3f89427dac264017f8f68ad8e6cfead99d9a83bae9057f542c1293a1249d11ff810770c5a96e36221
+  id : 1601083832
+
+link :
+  link_url : vkpeople.ru
+  link_domain : vkpeople.ru
+
+country : 1
+
+sex:
+  man : 1
+  woman : 2
+  # TODO in model method get_statistics
+  # man_and_woman : 0  
+
+# если  age=0 значит возраст не задан
+age : 
+  from : 1
+  to : 100
