@@ -21,7 +21,9 @@ class Load
     age_from, age_to = config['age']['from'], config['age']['to']
 
     ages=[]
-    age_from.upto(age_to){|n| ages << n}
+    age_from.upto(age_to) do |n|
+      ages << n 
+    end
       
     criterias = []
     sexes.each do |sex|
@@ -44,9 +46,10 @@ class Load
        when 2 then "w"+value[:age].to_s
        else raise("Invalid value sex in config file")
     end
+      
+    puts result["audience_count"] #DEBUG
 
     {key => result["audience_count"]}        
-
   end
 
 

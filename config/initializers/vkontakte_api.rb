@@ -3,7 +3,7 @@ VkontakteApi.configure do |config|
   # config.app_id       = '3303641'
   # config.app_secret   = '727450551296d527eebcd5e6014ac80ca3e76256355d1c06dbeea929c023c5d8e09c58b9f6aa0075681e2'
   # config.redirect_uri = 'http://vkpeople.ru'
-  
+
   # Faraday adapter to make requests with:
   # config.adapter = :net_http
   

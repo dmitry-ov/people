@@ -9,6 +9,7 @@ gem 'vkontakte_api'
 
 gem 'delayed_job'#, git: 'git://github.com/collectiveidea/delayed_job.git'
 gem 'delayed_job_active_record'
+gem 'daemons'
 
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
