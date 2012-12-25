@@ -25,8 +25,8 @@ set :rvm_type, :user
 
 set :deploy_via, :remote_cache
 # set :deploy_via, :copy
-set :deploy_via, :checkout
-set :copy_strategy, :export
+# set :deploy_via, :checkout
+# set :copy_strategy, :export
 
 namespace :deploy do
 	task :start do ; end
