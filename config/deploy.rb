@@ -23,7 +23,7 @@ set :use_sudo, false
 set :rvm_ruby_string, "1.9.3-p327-perf"
 set :rvm_type, :user 
 
-# set :deploy_via, :remote_cache
+set :deploy_via, :remote_cache
 # set :deploy_via, :copy
 set :deploy_via, :checkout
 set :copy_strategy, :export
