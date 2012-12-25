@@ -9,21 +9,41 @@ describe RespondLog do
     @respondlog.should be_respond_to(:region)
   end
 
-  it "should valid with region_id, responddate, status attributes" do
-    @respondlog.region_id = Region.first
-    @respondlog.responddate = DateTime.now
-    @respondlog.status = "report about response"
-    @respondlog.should be_valid
+  context "status" do
+    before :each do
+      @respondlog = RespondLog.new
+      @respondlog.region_id = Region.first
+      @respondlog.responddate = DateTime.now
+      @respondlog.message = "report about response... Long long message....."
+    end  
+
+    it "should valid with region_id, responddate, message and status attributes" do
+      @respondlog.status = "success"
+      @respondlog.should be_valid
+    end
+
+    it "should valid with region_id, responddate, message and status attributes" do
+      @respondlog.status = "fail"
+      @respondlog.should be_valid
+    end
+
+    it "should valid with region_id, responddate, message and status attributes" do
+      @respondlog.status = "partially"
+      @respondlog.should be_valid
+    end
   end
  
   it "should add to log" do
     before = RespondLog.all.size
-    RespondLog.add(Region.first, DateTime.now, "Long long report about response" )
+    RespondLog.add(Region.first, DateTime.now, "fail", "Long long report about response" )
     (RespondLog.all.size - before).should == 1
   end
   
   it "should clear log" do
-    RespondLog.create(:region_id => Region.first, :responddate => DateTime.now, :status => "report")
+    Random.rand(10).times do |r|
+      RespondLog.add(Region.first, DateTime.now, "fail", "#{r} Long report")
+    end
+
     RespondLog.clear 
     RespondLog.all.size.should == 0
   end

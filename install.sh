@@ -14,18 +14,17 @@ gem install bundle
 rvm reload
 
 
-sudo apt-get install python-software-properties
+sudo apt-get -y install python-software-properties
 sudo apt-add-repository -y ppa:pitti/postgresql
 sudo apt-get -y update
-sudo apt-get -y install postgresql-9.2 libpq-dev
+sudo apt-get -y install postgresql-9.2 postgresql-contrib-9.2 libpq-dev 
 
 
 gem install passenger
 rvmsudo passenger-install-nginx-module
 
 git clone git://github.com/vkurennov/rails-nginx-passenger-ubuntu.git
-
+# git clone git@github.com:ovcharenkodi/rails-nginx-passenger-ubuntu.git
 sudo mv rails-nginx-passenger-ubuntu/nginx/nginx /etc/init.d/nginx
 sudo chown root:root /etc/init.d/nginx
-
 sudo /etc/init.d/nginx restart

@@ -121,7 +121,8 @@ CREATE TABLE respond_logs (
     id integer NOT NULL,
     responddate date,
     region_id integer,
-    status text,
+    status character varying(255),
+    message text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

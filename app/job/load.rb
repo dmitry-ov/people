@@ -47,8 +47,6 @@ class Load
        else raise("Invalid value sex in config file")
     end
       
-    puts result["audience_count"] #DEBUG
-
     {key => result["audience_count"]}        
   end
 
