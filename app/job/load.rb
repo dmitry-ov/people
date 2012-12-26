@@ -46,7 +46,7 @@ class Load
        when 2 then "w"+value[:age].to_s
        else raise("Invalid value sex in config file")
     end
-    # puts result["audience_count"]  
+    puts result["audience_count"] #DEBUG  
     {key => result["audience_count"]}        
   end
 

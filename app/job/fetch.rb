@@ -29,12 +29,15 @@ class Fetch
     # record_stat 'newsletter_job/success'
     # пишем в лог о успешном получении запросов по региону
     RespondLog.add(@region, DateTime.now, "success", "#{exception.class} #{exception.message}" )
+    # add start_at
+    # add finish_at
   end
 
   def error(job, exception)
     # Airbrake.notify(exception)
     # пишем в лог о том что появились ошибки. текст ошибки записываем
     RespondLog.add(@region, DateTime.now, "error", "#{exception.class} #{exception.message}" )
+    # add start_at
   end
 
   def failure
