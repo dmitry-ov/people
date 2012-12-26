@@ -13,6 +13,10 @@
 #   rake "some:great:rake:task"
 # end
 #
+every 1.day, :at => '1:00 am' do
+  runner "Statistic.fetch"
+end
+
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
