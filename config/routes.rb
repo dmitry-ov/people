@@ -1,6 +1,8 @@
 People::Application.routes.draw do
   get "respond_log/log"
 
+  mount DjMon::Engine => 'dj_mon'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

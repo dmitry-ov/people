@@ -14,7 +14,7 @@ gem install bundle
 rvm reload
 
 
-sudo apt-get -y install python-software-properties
+sudo apt-get -y install software-properties-common python-software-properties
 sudo apt-add-repository -y ppa:pitti/postgresql
 sudo apt-get -y update
 sudo apt-get -y install postgresql-9.2 postgresql-contrib-9.2 libpq-dev 
