@@ -20,3 +20,6 @@ db/structure.sql
 #Ignore vagrant file
 .vagrant
 Vagrantfile
+
+#rvm
+.rvmrc
