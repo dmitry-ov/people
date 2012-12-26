@@ -4,8 +4,10 @@ class Statistic < ActiveRecord::Base
   belongs_to :region
 
   def self.fetch
-    Region.all.each do |region|
+    region = Region.first 
+    # Region.all.each do |region|
       Delayed::Job.enqueue Fetch.new(region) 
-    end
+    # end
+
   end
 end

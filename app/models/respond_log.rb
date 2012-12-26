@@ -6,10 +6,11 @@ class RespondLog < ActiveRecord::Base
 
   validates_presence_of :region_id, :responddate, :status, :message 
   
-  validates :status, :inclusion => { :in => %w(success fail partially),
+  validates :status, :inclusion => { :in => %w(success fail error),
     :message => "%{value} is not a valid status"}
 
   def self.add(region, date, status, message)
+    puts "RespondLog.add --- " 
     RespondLog.create(
       :region_id => region.id,
       :responddate=> date, 

@@ -37,3 +37,4 @@ end
 
 gem 'jquery-rails'
 gem 'rake',  '~> 10.0.0'
+gem 'whenever', :require => false
