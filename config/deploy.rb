@@ -31,11 +31,27 @@ set :deploy_via, :remote_cache
 namespace :deploy do
 	task :start do ; end
 	task :stop do ; end
-	
-#	task :rm do
-#	  run "rm -rf vendor/cache"
-#	end
-
 end
 
-#before "bundle:install", "deploy:rm"
+namespace :delayed_job do
+  task :stop, :roles => :app do
+    run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job stop "
+  end
+
+  task :start, :roles => :app do
+    run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job start" 
+  end
+
+  task :restart, :roles => :app do
+    stop
+    start
+  end
+end
+
+
+after "deploy:stop", "delayed_job:stop"
+after "deploy:start", "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
+
+after "deploy", "deploy:cleanup" # keep only the last 5 releases
+
