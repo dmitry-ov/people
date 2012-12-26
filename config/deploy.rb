@@ -33,6 +33,7 @@ namespace :deploy do
 	task :stop do ; end
 end
 
+
 namespace :delayed_job do
   task :stop, :roles => :app do
     run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job stop "
@@ -45,6 +46,19 @@ namespace :delayed_job do
   task :restart, :roles => :app do
     stop
     start
+  end
+end
+
+
+namespace :whenever do
+  desc "whenever add jobs from config/schedule.rb to crontab"
+  task :add, :roles => :app do
+    whenever  --set 'environment=production' --update-crontab    
+  end
+
+  desc "whenever clear all jobs from crontab"
+  task :clear, :roles => :app do
+    whenever -c
   end
 end
 
