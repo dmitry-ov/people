@@ -60,3 +60,5 @@ module People
     config.assets.version = '1.0'
   end
 end
+
+Delayed::Worker.logger = ActiveSupport::BufferedLogger.new("log/delayed_jobs.log")

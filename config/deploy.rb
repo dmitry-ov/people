@@ -36,7 +36,7 @@ end
 
 namespace :delayed_job do
   task :stop, :roles => :app do
-    run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job stop "
+    run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job stop"
   end
 
   task :start, :roles => :app do
@@ -53,12 +53,12 @@ end
 namespace :whenever do
   desc "whenever add jobs from config/schedule.rb to crontab"
   task :add, :roles => :app do
-    run "cd #{current_path} && whenever  --set 'environment=production' --update-crontab "    
+    run "cd #{current_path} && bundle exec whenever --set 'environment=production' --update-crontab"    
   end
 
   desc "whenever clear all jobs from crontab"
   task :clear, :roles => :app do
-    run "cd #{current_path} && whenever -c"
+    run "cd #{current_path} && bundle exec whenever -c"
   end
 
   desc "whenever rewrite"
@@ -70,10 +70,11 @@ end
 
 
 after "deploy:stop", "delayed_job:stop"
-after "deploy:start", "delayed_job:start"
-after "deploy:restart", "delayed_job:restart"
 
-after "deploy:restart", "whenever:rewrite"
+after "deploy:start", "delayed_job:restart"
+after "deploy:start", "whenever:rewrite"
+
+after "deploy:restart", "delayed_job:restart"
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 
