@@ -21,5 +21,3 @@ db/structure.sql
 .vagrant
 Vagrantfile
 
-#rvm
-.rvmrc
