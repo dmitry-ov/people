@@ -53,12 +53,18 @@ end
 namespace :whenever do
   desc "whenever add jobs from config/schedule.rb to crontab"
   task :add, :roles => :app do
-    whenever  --set 'environment=production' --update-crontab    
+    run "cd #{current_path} && whenever  --set 'environment=production' --update-crontab "    
   end
 
   desc "whenever clear all jobs from crontab"
   task :clear, :roles => :app do
-    whenever -c
+    run "cd #{current_path} && whenever -c"
+  end
+
+  desc "whenever rewrite"
+  task :rewrite, :roles => :app do
+    clear
+    add
   end
 end
 
@@ -66,6 +72,8 @@ end
 after "deploy:stop", "delayed_job:stop"
 after "deploy:start", "delayed_job:start"
 after "deploy:restart", "delayed_job:restart"
+
+after "deploy:restart", "whenever:rewrite"
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 

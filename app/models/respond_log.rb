@@ -10,7 +10,6 @@ class RespondLog < ActiveRecord::Base
     :message => "%{value} is not a valid status"}
 
   def self.add(region, date, status, message)
-    puts "RespondLog.add --- " 
     RespondLog.create(
       :region_id => region.id,
       :responddate=> date, 
