@@ -15,6 +15,7 @@ gem 'dj_mon'
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
 
+gem 'passenger'
 gem 'jquery-rails'
 gem 'rake',  '~> 10.0.0'
 gem 'whenever', :require => false
