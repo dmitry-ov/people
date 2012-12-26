@@ -17,18 +17,18 @@ describe RespondLog do
       @respondlog.message = "report about response... Long long message....."
     end  
 
-    it "should valid with region_id, responddate, message and status attributes" do
+    it "should valid with region_id, responddate, message and status success attributes" do
       @respondlog.status = "success"
       @respondlog.should be_valid
     end
 
-    it "should valid with region_id, responddate, message and status attributes" do
+    it "should valid with region_id, responddate, message and status fail attributes" do
       @respondlog.status = "fail"
       @respondlog.should be_valid
     end
 
-    it "should valid with region_id, responddate, message and status attributes" do
-      @respondlog.status = "partially"
+    it "should valid with region_id, responddate, message and status error attributes" do
+      @respondlog.status = "error"
       @respondlog.should be_valid
     end
   end
