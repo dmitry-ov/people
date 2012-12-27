@@ -71,6 +71,17 @@ namespace :whenever do
 end
 
 
+namespace :passenger do
+  desc "Restart Application"  
+  task :restart do  
+    run "touch #{current_path}/tmp/restart.txt"  
+  end
+end
+
+
+
+after :deploy, "passenger:restart"
+
 after "deploy:stop", "delayed_job:stop"
 
 after "deploy:start", "delayed_job:restart"
