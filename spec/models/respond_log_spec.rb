@@ -41,7 +41,7 @@ describe RespondLog do
   
   it "should clear log" do
     Random.rand(10).times do |r|
-      RespondLog.add(Region.first, DateTime.now, "fail", "#{r} Long report")
+      RespondLog.add(Region.all[(rand(83))], DateTime.now, "fail", "#{r} Long report")
     end
 
     RespondLog.clear 

@@ -1,5 +1,7 @@
 People::Application.routes.draw do
-  get "respond_log/log"
+  # get "respond_log/log" 
+
+  match "/respond_log" => "respond_log#log"
 
   mount DjMon::Engine => 'dj_mon'
 
