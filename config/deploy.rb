@@ -79,7 +79,6 @@ namespace :passenger do
 end
 
 
-
 after :deploy, "passenger:restart"
 
 after "deploy:stop", "delayed_job:stop"
