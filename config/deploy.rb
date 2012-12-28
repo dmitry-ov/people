@@ -39,11 +39,16 @@ end
 namespace :delayed_job do
   task :stop, :roles => :app do
     run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job stop"
+    run "ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
   end
 
   task :start, :roles => :app do
     run "ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
     run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job start" 
+  end
+
+  task :clear, :roles => :app do
+    run "cd #{current_path}; RAILS_ENV=production rake jobs:clear" 
   end
 
   task :restart, :roles => :app do
