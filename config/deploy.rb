@@ -42,6 +42,7 @@ namespace :delayed_job do
   end
 
   task :start, :roles => :app do
+    run "ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
     run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job start" 
   end
 
