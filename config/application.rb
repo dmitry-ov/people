@@ -61,4 +61,7 @@ module People
   end
 end
 
-Delayed::Worker.logger = ActiveSupport::BufferedLogger.new("log/delayed_jobs.log")
+Delayed::Worker.logger = ActiveSupport::BufferedLogger.new("#{Rails.root}log/delayed_jobs.log")
+
+
+
