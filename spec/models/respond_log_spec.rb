@@ -33,6 +33,36 @@ describe RespondLog do
     end
   end
  
+  context "add record in db" do
+    before :each do
+      @respondlog = RespondLog.new
+      @respondlog.region_id = Region.first
+      @respondlog.responddate = DateTime.now
+      @respondlog.message = "report about response... Long long message....."
+    end  
+
+    it "should valid with region_id, responddate, message and status success attributes" do
+      before = RespondLog.all.size
+      @respondlog.status = "success"
+      @respondlog.save
+      (RespondLog.all.size - before).should == 1
+    end
+
+    it "should valid with region_id, responddate, message and status fail attributes" do
+      before = RespondLog.all.size
+      @respondlog.status = "fail"
+      @respondlog.save
+      (RespondLog.all.size - before).should == 1
+    end
+
+    it "should valid with region_id, responddate, message and status error attributes" do
+      before = RespondLog.all.size
+      @respondlog.status = "error"
+      @respondlog.save
+      (RespondLog.all.size - before).should == 1
+    end
+  end
+
   it "should add to log" do
     before = RespondLog.all.size
     RespondLog.add(Region.first, DateTime.now, "fail", "Long long report about response" )

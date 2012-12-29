@@ -3,8 +3,9 @@
 -->
 
 <% @log.each do |l| %>
-   <%= l.responddate %>
-   <%= l.region.name %> 
+   <%= l.created_at %>
    <%= l.status %>
+   <%= l.message %>
+   <%= l.region.name %>
   </br>
 <% end %>
