@@ -1,16 +1,11 @@
 People::Application.routes.draw do
   # get "respond_log/log" 
 
-  match "/respond_log" => "respond_log#log"
-<<<<<<< HEAD
-=======
+   match "/respond_log" => "respond_log#log"
+ 
+   mount DjMon::Engine => 'dj_mon'
 
-  root :to => 'respond_log#log'
-  
->>>>>>> 1613078c2cccd2dbe0875d7a707f35332e7f5e59
-  mount DjMon::Engine => 'dj_mon'
-
-  root :to => 'respond_log#log'
+   root :to => 'respond_log#log'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
