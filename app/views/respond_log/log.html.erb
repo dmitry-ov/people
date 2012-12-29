@@ -4,8 +4,8 @@
 
 <% @log.each do |l| %>
    <%= l.created_at %>
+   <%= l.region.name %>
    <%= l.status %>
    <%= l.message %>
-   <%= l.region.name %>
   </br>
 <% end %>
