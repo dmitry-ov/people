@@ -5,7 +5,8 @@
 
 # Example:
 #
-set :output, "/home/dmitry/app/curent/log/cron_log.log"
+
+set :output, "#{path}/log/cron.log"
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -13,7 +14,7 @@ set :output, "/home/dmitry/app/curent/log/cron_log.log"
 #   rake "some:great:rake:task"
 # end
 #
-every 1.day, :at => '02:00 am' do
+every 1.day, :at => '09:51 pm' do
   runner "Statistic.fetch"
 end
 
