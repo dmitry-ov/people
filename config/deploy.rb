@@ -86,7 +86,7 @@ end
 
 
 
-after "deploy:stop", "delayed_job:stop"
+# after "deploy:stop", "delayed_job:stop"
 
 # after "deploy:start", "delayed_job:restart"
 after "deploy:start", "whenever:add"
