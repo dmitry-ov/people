@@ -22,13 +22,12 @@ class Fetch
   end
 
   def after(job)
-    # record_stat 'newsletter_job/after'
+    RespondLog.add(@region, DateTime.now, "success", "")
   end
 
   def success(job)
     # record_stat 'newsletter_job/success'
     # пишем в лог о успешном получении запросов по региону
-    RespondLog.add(@region, DateTime.now, "success", "")
     # add start_at
     # add finish_at
   end
