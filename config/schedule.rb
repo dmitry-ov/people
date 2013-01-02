@@ -14,7 +14,7 @@ set :output, "#{path}/log/cron.log"
 #   rake "some:great:rake:task"
 # end
 #
-every 1.day, :at => '10:00 am' do
+every 1.day, :at => '10:15 pm' do
   runner "Statistic.fetch"
 end
 
