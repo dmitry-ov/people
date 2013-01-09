@@ -1,17 +1,11 @@
 require 'bundler/capistrano'
-require "rvm/capistrano"
+require "rvm/cpaistrano"
 
 set :application, "people"
 set :scm, :git
 set :repository, "git://github.com/ovcharenkodi/people.git"
 
-# 1gb Ubuntu server
-server "81.177.142.175", :web, :app, :db, :primary => true
-# server "10.8.0.6", :web, :app, :db, :primary => true
-
-
-# infobox ubuntu server
-# server "109.120.166.170", :web, :app, :db, :primary => true
+server "81.177.142.64", :web, :app, :db, :primary => true
 
 ssh_options[:port] = 22
 ssh_options[:keys] = "/home/dmitry/.ssh/id_rsa"
@@ -22,7 +16,7 @@ set :deploy_to, "/home/#{user}/app/"
 set :use_sudo, false
 
 # RVM's capistrano plugin.    
-set :rvm_ruby_string, "1.9.3-p362"
+set :rvm_ruby_string, "1.9.3"
 set :rvm_type, :user 
 
 set :deploy_via, :remote_cache

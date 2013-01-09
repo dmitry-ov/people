@@ -1,11 +1,16 @@
 <!-- <h1>RespondLog#log</h1>
 <p>Find me in app/views/respond_log/log.html.erb</p>
 -->
-
-<% @log.each do |l| %>
-   <%= l.created_at %>
-   <%= l.region.name %>
-   <%= l.status %>
-   <%= l.message %>
-  </br>
-<% end %>
+<table border="1">
+  <% @log.each do |l| %>
+    <tr>
+      <td> 
+        <img src=<%= l.status == "error" ? "assets/error.png" : "assets/success.png" %>> 
+      </td>
+      <td> <%= l.created_at %> </td>
+      <td> <%= l.region.name %> </td>
+      <td> <%= l.status %> </td>
+      <td> <%= l.message %> </td>
+    </tr>
+  <% end %>
+</table>
