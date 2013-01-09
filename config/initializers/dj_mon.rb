@@ -1,2 +1,3 @@
-People::Application.config.dj_mon.username = "dj"
-People::Application.config.dj_mon.password = "dj"
+#todo password set
+People::Application.config.dj_mon.username = ""
+People::Application.config.dj_mon.password = ""
