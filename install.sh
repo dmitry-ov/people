@@ -3,17 +3,13 @@ sudo apt-get install -y curl build-essential openssl libreadline6 libreadline6-d
 curl -L https://get.rvm.io | bash -s stable
 rvm reload
 rvm get head
-rvm install 1.9.3 -n perf --patch falcon
-rvm alias create default 1.9.3-p327-perf
-# rvm use 1.9.3-perf --default
-# rvm use 1.9.3-p327-perf@global
+rvm install 1.9.3
 rvm gemset use global
 
 gem install bundle
-
 rvm reload
 
-
+#install postgres
 sudo apt-get -y install software-properties-common python-software-properties
 sudo apt-add-repository -y ppa:pitti/postgresql
 sudo apt-get -y update
