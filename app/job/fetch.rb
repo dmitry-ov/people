@@ -7,42 +7,29 @@ class Fetch
 
   def perform
     load = Load.new(@region)
-    # begin
-      region_report = load.report 
-    # rescue => e
-      # raise(e)        
-    # end 
+    region_report = load.report 
     statistic = Statistic.create(:date => DateTime.now, :region => @region)
     statistic.hashvalue = region_report 
     statistic.save
   end
 
   def before(job)
-    # record_stat 'newsletter_job/start'
   end
 
   def after(job)
-    RespondLog.add(@region, DateTime.now, "success", "")
   end
 
   def success(job)
-    # record_stat 'newsletter_job/success'
-    # пишем в лог о успешном получении запросов по региону
-    # add start_at
-    # add finish_at
-    RespondLog.add(@region, DateTime.now, "success", "")
+    RespondLog.add(@region, DateTime.now, "success", "Выполнено")
   end
 
   def error(job, exception)
     # Airbrake.notify(exception)
-    # пишем в лог о том что появились ошибки. текст ошибки записываем
     RespondLog.add(@region, DateTime.now, "error", "Class: #{exception.class.to_s}   Message: #{exception.message.to_s}" )
-    # add start_at
   end
 
   def failure
     # page_sysadmin_in_the_middle_of_the_night
-    # лог падений записываем в таблицу
-    RespondLog.add(@region, DateTime.now, "fail", "" )
+    RespondLog.add(@region, DateTime.now, "fail", "Удалено из очереди")
   end
 end

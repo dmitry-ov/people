@@ -10,11 +10,10 @@ class RespondLog < ActiveRecord::Base
     :message => "%{value} is not a valid status"}
 
   def self.add(region, date, status, message)
-    RespondLog.create(
-      :region_id => region.id,
-      :responddate=> date, 
-      :status => status,
-      :message => message)
+    RespondLog.new( :region_id => region.id, 
+                    :responddate=> date,
+                    :status => status,
+                    :message => message).save!
   end
 
   def self.clear
