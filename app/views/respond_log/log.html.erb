@@ -1,11 +1,23 @@
 <!-- <h1>RespondLog#log</h1>
 <p>Find me in app/views/respond_log/log.html.erb</p>
 -->
+
+
 <table border="1">
   <% @log.each do |l| %>
     <tr>
       <td> 
-        <img src=<%= l.status == "error" ? "assets/error.png" : "assets/success.png" %>> 
+        <img src=<%= case l.status
+                        when "success"
+                            "assets/success.png"
+                        when "fail"
+                            "assets/fail.png"
+                        when "error"
+                            "assets/error.png"
+                        else
+                            0
+                      end %>
+                 > 
       </td>
       <td> <%= l.created_at %> </td>
       <td> <%= l.region.name %> </td>
@@ -14,3 +26,4 @@
     </tr>
   <% end %>
 </table>
+
