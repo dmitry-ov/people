@@ -1,11 +1,11 @@
 require 'bundler/capistrano'
-require "rvm/cpaistrano"
+require "rvm/capistrano"
 
 set :application, "people"
 set :scm, :git
 set :repository, "git://github.com/ovcharenkodi/people.git"
 
-server "81.177.142.64", :web, :app, :db, :primary => true
+server "94.249.192.123", :web, :app, :db, :primary => true
 
 ssh_options[:port] = 22
 ssh_options[:keys] = "/home/dmitry/.ssh/id_rsa"
