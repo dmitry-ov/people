@@ -3,6 +3,7 @@
 -->
 
 
+
 <table border="1">
   <% @log.each do |l| %>
     <tr>
@@ -16,8 +17,7 @@
                             "assets/error.png"
                         else
                             0
-                      end %>
-                 > 
+                      end %>> 
       </td>
       <td> <%= l.created_at %> </td>
       <td> <%= l.region.name %> </td>

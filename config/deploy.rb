@@ -82,9 +82,14 @@ end
 
 after "deploy:stop", "delayed_job:stop"
 after "deploy:start", "delayed_job:restart"
-after "deploy:start", "whenever:add"
 after "deploy:start", "passenger:restart"
+
 after "deploy:restart", "delayed_job:restart"
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
+# after "deploy:start", "whenever:add"
 
 # git ad . && git ci -am 'fix time start dj' && git psh
+
+
+
+
