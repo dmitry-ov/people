@@ -1,12 +1,13 @@
 People::Application.routes.draw do
+  get "statistic/index"
+
   # get "respond_log/log" 
 
    match "/respond_log" => "respond_log#log"
- 
    mount DjMon::Engine => 'dj_mon'
 
-   root :to => 'respond_log#log'
 
+   root :to => 'respond_log#log'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
