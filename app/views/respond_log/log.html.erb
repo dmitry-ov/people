@@ -2,10 +2,28 @@
 <p>Find me in app/views/respond_log/log.html.erb</p>
 -->
 
-<% @log.each do |l| %>
-   <%= l.created_at %>
-   <%= l.region.name %>
-   <%= l.status %>
-   <%= l.message %>
-  </br>
-<% end %>
+
+
+<table border="1">
+  <% @log.each do |l| %>
+    <tr>
+      <td> 
+        <img src=<%= case l.status
+                        when "success"
+                            "assets/success.png"
+                        when "fail"
+                            "assets/fail.png"
+                        when "error"
+                            "assets/error.png"
+                        else
+                            0
+                      end %>> 
+      </td>
+      <td> <%= l.created_at %> </td>
+      <td> <%= l.region.name %> </td>
+      <td> <%= l.status %> </td>
+      <td> <%= l.message %> </td>
+    </tr>
+  <% end %>
+</table>
+

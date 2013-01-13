@@ -16,7 +16,7 @@ set :deploy_to, "/home/#{user}/app/"
 set :use_sudo, false
 
 # RVM's capistrano plugin.    
-set :rvm_ruby_string, "1.9.3-p362"
+set :rvm_ruby_string, "1.9.3"
 set :rvm_type, :user 
 
 set :deploy_via, :remote_cache
@@ -81,11 +81,15 @@ end
 
 
 after "deploy:stop", "delayed_job:stop"
-
 after "deploy:start", "delayed_job:restart"
-after "deploy:start", "whenever:rewrite"
 after "deploy:start", "passenger:restart"
 
 after "deploy:restart", "delayed_job:restart"
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
+# after "deploy:start", "whenever:add"
+
+# git ad . && git ci -am 'fix time start dj' && git psh
+
+
+
 

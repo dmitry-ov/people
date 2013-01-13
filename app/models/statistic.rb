@@ -8,4 +8,5 @@ class Statistic < ActiveRecord::Base
        Delayed::Job.enqueue Fetch.new(region) 
      end
   end
+
 end

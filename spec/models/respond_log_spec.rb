@@ -68,6 +68,11 @@ describe RespondLog do
     RespondLog.add(Region.first, DateTime.now, "fail", "Long long report about response" )
     (RespondLog.all.size - before).should == 1
   end
+
+  pending "should add to log record with not empty messages"
+  # it "should add to log record with not empty messages" do
+    # RespondLog.add(Region.first, DateTime.now, "fail", "")
+  # end
   
   it "should clear log" do
     Random.rand(10).times do |r|
