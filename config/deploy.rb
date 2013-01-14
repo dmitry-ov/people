@@ -30,9 +30,9 @@ namespace :deploy do
 end
 
 
-namespace :delayedjob do
+namespace :dj do
   task :stop, :roles => :app do
-    run "cd #{current_path}; RAILS_ENV=production ruby script/delayedjob stop"
+    run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job stop"
     run "ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
   end
 
@@ -80,11 +80,11 @@ end
 
 
 
-after "deploy:stop", "delayedjob:stop"
-after "deploy:start", "delayedjob:restart"
+after "deploy:stop", "dj:stop"
+after "deploy:start", "dj:restart"
 after "deploy:start", "passenger:restart"
 
-after "deploy:restart", "delayedjob:restart"
+after "deploy:restart", "dj:restart"
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 # after "deploy:start", "whenever:add"
 
