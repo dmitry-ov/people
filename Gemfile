@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
+gem 'twitter-bootstrap-rails'
+
 # gem 'sqlite3'
 # gem 'bundle'
 gem 'activerecord-postgresql-adapter'
@@ -14,6 +16,7 @@ gem 'dj_mon'
 
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
+gem "less-rails"
 
 gem 'passenger'
 gem 'jquery-rails'
