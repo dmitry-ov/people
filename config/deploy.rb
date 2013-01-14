@@ -30,15 +30,15 @@ namespace :deploy do
 end
 
 
-namespace :delayed_job do
+namespace :delayedjob do
   task :stop, :roles => :app do
-    run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job stop"
-    run "ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
+    run "cd #{current_path}; RAILS_ENV=production ruby script/delayedjob stop"
+    run "ps xu | grep delayedjob | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
   end
 
   task :start, :roles => :app do
-    run "ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
-    run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job start" 
+    run "ps xu | grep delayedjob | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
+    run "cd #{current_path}; RAILS_ENV=production ruby script/delayedjob start" 
   end
 
   task :clear, :roles => :app do
@@ -80,11 +80,11 @@ end
 
 
 
-after "deploy:stop", "delayed_job:stop"
-after "deploy:start", "delayed_job:restart"
+after "deploy:stop", "delayedjob:stop"
+after "deploy:start", "delayedjob:restart"
 after "deploy:start", "passenger:restart"
 
-after "deploy:restart", "delayed_job:restart"
+after "deploy:restart", "delayedjob:restart"
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 # after "deploy:start", "whenever:add"
 
