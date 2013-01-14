@@ -45,6 +45,10 @@ namespace :dj do
     run "cd #{current_path}; RAILS_ENV=production rake jobs:clear" 
   end
 
+  task :status, :roles => :app do
+    run "ps xu | grep delayed_job"
+  end
+
   task :restart, :roles => :app do
     stop
     start
