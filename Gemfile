@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
-gem 'twitter-bootstrap-rails'
 
 # gem 'sqlite3'
 # gem 'bundle'
@@ -16,7 +15,8 @@ gem 'dj_mon'
 
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
-gem "less-rails"
+gem 'twitter-bootstrap-rails'#, :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'less-rails'
 
 gem 'passenger'
 gem 'jquery-rails'
