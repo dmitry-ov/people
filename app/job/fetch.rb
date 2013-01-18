@@ -26,6 +26,7 @@ class Fetch
   def error(job, exception)
     # Airbrake.notify(exception)
     RespondLog.add(@region, DateTime.now, "error", "Class: #{exception.class.to_s}   Message: #{exception.message.to_s}" )
+   sleep 3
   end
 
   def failure
