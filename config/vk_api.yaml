@@ -12,9 +12,9 @@ sex:
   man : 1
   woman : 2
   # TODO in model method get_statistics
-  # man_and_woman : 0  
+  man_and_woman : 0  
 
 # если  age=0 значит возраст не задан
 age : 
-  from : 1 
-  to : 100
+  from : 0 
+  to : 0

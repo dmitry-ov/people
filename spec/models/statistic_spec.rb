@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 require 'spec_helper'
 
 describe Statistic do
@@ -36,6 +38,7 @@ describe Statistic do
   end
  
   pending "validates  :hash  length/size = 600"
+  pending "clear method. Похож на аналогичный метод в RespondLog"
 
 end
 

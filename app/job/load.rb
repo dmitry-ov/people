@@ -19,7 +19,8 @@ class Load
   def make_criterias 
     sexes = []
     sexes << config['sex']['man'] << config['sex']['woman']
-
+    sexes= [0] if config['sex']['man_and_woman'] == 0
+   
     age_from, age_to = config['age']['from'], config['age']['to']
 
     ages=[]
@@ -46,6 +47,7 @@ class Load
     client = nil
 
     key = case value[:sex]
+       when 0 then "mw"+value[:age].to_s
        when 1 then "m"+value[:age].to_s
        when 2 then "w"+value[:age].to_s
        else raise("Invalid value sex in config file")
@@ -64,7 +66,7 @@ class Load
     criterias.each do |criteria|
       vk_api_answer = nil
     
-      10.times do |t|
+      3.times do |t|
         begin
           vk_api_answer = respond(criteria)
           break if vk_api_answer.class.to_s == "Hash" 
