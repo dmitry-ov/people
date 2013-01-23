@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 class Load
   @@path = "#{Rails.root}/config/vk_api.yaml"
 
@@ -38,8 +40,10 @@ class Load
 
   def respond(value)
     client = VkontakteApi::Client.new(config['account']['secret_token'])
+    sleep 2
     criteria = "{'sex': #{value[:sex]}, 'age_from': #{value[:age]}, 'age_to': #{value[:age]}, 'country': #{config['country']}, 'city': #{@region.id_vk}}"
     result = client.ads.get_targeting_stats( account_id: config['account']['id'], link_url: config['link']['link_url'], link_domain: config['link']['link_domain'], criteria: criteria.gsub("'",'"'))
+    client = nil
 
     key = case value[:sex]
        when 1 then "m"+value[:age].to_s
@@ -47,7 +51,8 @@ class Load
        else raise("Invalid value sex in config file")
     end
     puts result["audience_count"] #DEBUG  
-    {key => result["audience_count"]}        
+    {key => result["audience_count"]}
+
   end
 
 
@@ -55,10 +60,22 @@ class Load
     criterias = make_criterias
 
     report = {}
+    
     criterias.each do |criteria|
-      vk_api_answer = respond(criteria) 
+      vk_api_answer = nil
+    
+      10.times do |t|
+        begin
+          vk_api_answer = respond(criteria)
+          break if vk_api_answer.class.to_s == "Hash" 
+        rescue => exception
+          RespondLog.add(@region, DateTime.now, "error", "Ошибка запроса  Class: #{exception.class.to_s}  Message: #{exception.message.to_s}" )
+          sleep 2
+        end
+      end
+
+      raise("not connect to vk.com") unless vk_api_answer.class.to_s == "Hash"
       report.merge!(vk_api_answer)
-      sleep 2
     end
     report
   end
