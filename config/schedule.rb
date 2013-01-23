@@ -6,7 +6,7 @@
 # Example:
 #
 
-set :output, "#{Rails.root}/log/cron.log"
+# set :output, "#{Rails.root}/log/cron.log"
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -15,7 +15,7 @@ set :output, "#{Rails.root}/log/cron.log"
 # end
 #
 every 1.day, :at => '00:01 am' do
-  runner "Statistic.fetch"
+  runner "Statistic.fetch", :output => '#{Rails.root}/log/cron.log'   
 end
 
 # every 4.days do
@@ -23,5 +23,4 @@ end
 # end
 
 # Learn more: http://github.com/javan/whenever
-
 # whenever  --set 'environment=production' --update-crontab
