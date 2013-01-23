@@ -88,9 +88,10 @@ end
 # after "deploy:start", "dj:restart"
 after "deploy:start", "passenger:restart"
 
+after "deploy:start", "whenever:rewrite"
+
 # after "deploy:restart", "dj:restart"
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
-# after "deploy:start", "whenever:add"
 
 # git ad . && git ci -am 'fix time start dj' && git psh
 

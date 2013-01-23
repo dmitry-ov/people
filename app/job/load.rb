@@ -4,7 +4,7 @@ class Load
 
   def initialize(region)
     raise("value region not class region") unless region.class.to_s == "Region"
-    @region=region
+    @region = region
   end
 
 
