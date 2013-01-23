@@ -1,6 +1,6 @@
 class RespondLogController < ApplicationController
   def log
-    @log = RespondLog.all    
+    @log = RespondLog.order("id DESC").all    
   end
 
 end 
