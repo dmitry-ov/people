@@ -27,7 +27,7 @@ class Load
     age_from.upto(age_to) do |n|
       ages << n 
     end
-      
+
     criterias = []
     sexes.each do |sex|
         ages.each do |age|
@@ -42,8 +42,11 @@ class Load
   def respond(value)
     client = VkontakteApi::Client.new(config['account']['secret_token'])
     sleep 2
-    criteria = "{'sex': #{value[:sex]}, 'age_from': #{value[:age]}, 'age_to': #{value[:age]}, 'country': #{config['country']}, 'city': #{@region.id_vk}}"
-    result = client.ads.get_targeting_stats( account_id: config['account']['id'], link_url: config['link']['link_url'], link_domain: config['link']['link_domain'], criteria: criteria.gsub("'",'"'))
+    criteria = "{'sex': #{value[:sex]}, 'age_from': #{value[:age]}, 'age_to': #{value[:age]}, 'country': #{config['country']}, 'cities': #{@region.id_vk}}"
+    result = client.ads.get_targeting_stats( account_id: config['account']['id'], 
+                                             link_url: config['link']['link_url'], 
+                                             link_domain: config['link']['link_domain'], 
+                                             criteria: criteria.gsub("'",'"'))
     client = nil
 
     key = case value[:sex]

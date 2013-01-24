@@ -7,11 +7,13 @@
 
 <p><a href="/dj_mon">DJ_Mon</a></p>
 <p><a href="/respond_log">Журнал</a></p>
+<p><a href="/statistic/index">Статистика в цифрах</a></p>
 
-         
-         <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
-         <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-         <style type="text/css">
+   <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+   <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+   <style type="text/css">
+
 
 
     body {
@@ -154,18 +156,20 @@
       
       d3.select(this).style("fill", "url(#img2)");
 
+
       var state = d3.select(this).attr('id'),
 
         msg = '<h1>' + dataset[state].label + '</h1>';
-              
 
       d3.select('#header').classed('hidden', false);
       d3.select('#header .innerHeader').html(msg);
-      
+
     });
 
+
       d3.selectAll('.state').on("click", function() { 
-        alert(dataset[d3.select(this).attr('id')].label); 
+        // d3.select(this).attr("class", "tooltip");
+        // alert(dataset[d3.select(this).attr('id')].label); 
       });
 
 
