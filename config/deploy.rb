@@ -31,22 +31,31 @@ end
 
 
 namespace :dj do
+  desc "delayed_job stop"
   task :stop, :roles => :app do
     run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job stop"
     run "ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
   end
 
+  desc "delayed_job start"
   task :start, :roles => :app do
     run "ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
     run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job start" 
   end
 
+  desc "clear delayed_job queue"
   task :clear, :roles => :app do
     run "cd #{current_path}; RAILS_ENV=production rake jobs:clear" 
   end
 
+  desc "status delayed_job"
   task :status, :roles => :app do
     run "ps xu | grep delayed_job"
+  end
+
+  desc "Add to queue fetch job"
+  task :fetch do
+    run "cd #{current_path}; script/rails runner -e production 'Statistic.fetch'" 
   end
 
   task :restart, :roles => :app do
@@ -76,13 +85,11 @@ end
 
 
 namespace :passenger do
-  desc "Restart Application"  
+  desc "Restart passenger server"  
   task :restart do  
     run "touch #{current_path}/tmp/restart.txt"  
   end
 end
-
-
 
 
 after "deploy:start", "dj:restart"
