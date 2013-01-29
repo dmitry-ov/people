@@ -5,7 +5,7 @@ set :application, "people"
 set :scm, :git
 set :repository, "git://github.com/ovcharenkodi/people.git"
 
-server "94.249.192.123", :web, :app, :db, :primary => true
+server "178.79.130.207", :web, :app, :db, :primary => true
 
 ssh_options[:port] = 22
 ssh_options[:keys] = "/home/dmitry/.ssh/id_rsa"
