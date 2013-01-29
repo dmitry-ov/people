@@ -92,7 +92,7 @@ namespace :passenger do
 end
 
 
-after "deploy:start", "dj:restart"
+# after "deploy:start", "dj:restart"
 after "deploy:start", "passenger:restart"
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
