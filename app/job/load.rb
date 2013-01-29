@@ -1,5 +1,3 @@
-#encoding: utf-8
-
 class Load
   @@path = "#{Rails.root}/config/vk_api.yaml"
 
@@ -70,16 +68,16 @@ class Load
       vk_api_answer = nil
     
       # 3.times do |t|
-        # begin
+      #   begin
           vk_api_answer = respond(criteria)
-          # break if vk_api_answer.class.to_s == "Hash" 
+      #     break if vk_api_answer.class.to_s == "Hash" 
       #   rescue => exception
       #     RespondLog.add(@region, DateTime.now, "error", "Ошибка запроса  Class: #{exception.class.to_s}  Message: #{exception.message.to_s}" )
       #     sleep 2
       #   end
       # end
 
-      # raise("not connect to vk.com after 3 attepts ") unless vk_api_answer.class.to_s == "Hash"
+      # raise("not connect to vk.com") unless vk_api_answer.class.to_s == "Hash"
       report.merge!(vk_api_answer)
     end
     report
