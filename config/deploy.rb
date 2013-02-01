@@ -33,7 +33,7 @@ end
 namespace :dj do
   desc "delayed_job stop"
   task :stop, :roles => :app do
-    run "cd #{deploy_to}current; RAILS_ENV=production ruby script/delayed_job stop"
+    run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job stop"
     run "ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
   end
 
@@ -94,10 +94,11 @@ end
 
 
 before "deploy", "whenever:clear"
+before "deploy", "dj:stop"
 
 
 after "deploy", "whenever:add"
-after "deploy", "dj:restart"
+after "deploy", "dj:start"
 after "deploy", "passenger:restart"
 
 
