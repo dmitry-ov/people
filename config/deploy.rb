@@ -92,16 +92,17 @@ namespace :passenger do
 end
 
 
-# after "deploy:start", "dj:restart"
 
 before "deploy", "whenever:clear"
 
+
 after "deploy", "whenever:add"
+after "deploy", "dj:restart"
 after "deploy", "passenger:restart"
+
+
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 
-# after "deploy:stop", "dj:stop"
-# after "deploy:restart", "dj:restart"
 
 # git ad . && git ci -am 'fix' && git psh
 
