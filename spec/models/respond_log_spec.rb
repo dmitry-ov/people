@@ -71,7 +71,7 @@ describe RespondLog do
 
   it "should add to log" do
     before = RespondLog.all.size
-    RespondLog.add(Region.first, DateTime.now, "fail", "Long long report about response" )
+    RespondLog.add(Region.first, DateTime.now, "fail", "Long long report about response")
     (RespondLog.all.size - before).should == 1
   end
 
