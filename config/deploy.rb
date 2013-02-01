@@ -93,12 +93,13 @@ end
 
 
 # after "deploy:start", "dj:restart"
-after "deploy:start", "passenger:restart"
 
+before "deploy:start", "whenever:clear"
+
+after "deploy:start", "whenever:add"
+after "deploy:start", "passenger:restart"
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 
-# after "deploy:start", "whenever:clear"
-# after "deploy:start", "whenever:add"
 # after "deploy:stop", "dj:stop"
 # after "deploy:restart", "dj:restart"
 
