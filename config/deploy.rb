@@ -96,8 +96,8 @@ end
 
 before "deploy", "whenever:clear"
 
-after "deploy:start", "whenever:add"
-after "deploy:start", "passenger:restart"
+after "deploy", "whenever:add"
+after "deploy", "passenger:restart"
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 
 # after "deploy:stop", "dj:stop"
