@@ -94,7 +94,7 @@ end
 
 # after "deploy:start", "dj:restart"
 
-before "deploy:start", "whenever:clear"
+before "deploy", "whenever:clear"
 
 after "deploy:start", "whenever:add"
 after "deploy:start", "passenger:restart"
