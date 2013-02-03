@@ -6,7 +6,7 @@
 # Example:
 #
 
-# set :output, "#{Rails.root}/log/cron.log"
+set :output, "log/cron.log"
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -14,8 +14,8 @@
 #   rake "some:great:rake:task"
 # end
 #
-every 1.day, :at => '00:01 am' do
-  runner "Statistic.fetch", :output => '#{Rails.root}/log/cron.log'   
+every 1.day, :at => '06:01 am' do
+  runner "Statistic.fetch"   
 end
 
 # every 4.days do
