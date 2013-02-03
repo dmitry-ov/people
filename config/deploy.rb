@@ -5,7 +5,7 @@ set :application, "people"
 set :scm, :git
 set :repository, "git://github.com/ovcharenkodi/people.git"
 
-server "94.249.192.123", :web, :app, :db, :primary => true
+server "178.79.130.207", :web, :app, :db, :primary => true
 
 ssh_options[:port] = 22
 ssh_options[:keys] = "/home/dmitry/.ssh/id_rsa"
@@ -30,19 +30,32 @@ namespace :deploy do
 end
 
 
-namespace :delayed_job do
+namespace :dj do
+  desc "delayed_job stop"
   task :stop, :roles => :app do
     run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job stop"
     run "ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
   end
 
+  desc "delayed_job start"
   task :start, :roles => :app do
     run "ps xu | grep delayed_job | grep monitor | grep -v grep | awk '{print $2}' | xargs -r kill"
     run "cd #{current_path}; RAILS_ENV=production ruby script/delayed_job start" 
   end
 
+  desc "clear delayed_job queue"
   task :clear, :roles => :app do
     run "cd #{current_path}; RAILS_ENV=production rake jobs:clear" 
+  end
+
+  desc "status delayed_job"
+  task :status, :roles => :app do
+    run "ps xu | grep delayed_job"
+  end
+
+  desc "Add to queue fetch job"
+  task :fetch do
+    run "cd #{current_path}; script/rails runner -e production 'Statistic.fetch'" 
   end
 
   task :restart, :roles => :app do
@@ -55,12 +68,12 @@ end
 namespace :whenever do
   desc "whenever add jobs from config/schedule.rb to crontab"
   task :add, :roles => :app do
-    run "cd #{current_path} && bundle exec whenever --set 'environment=production' --update-crontab"    
+    run "cd #{current_path} && whenever --update-crontab"
   end
 
   desc "whenever clear all jobs from crontab"
   task :clear, :roles => :app do
-    run "cd #{current_path} && bundle exec whenever -c"
+    run "cd #{current_path} && bundle exec whenever -c" # не работает
   end
 
   desc "whenever rewrite"
@@ -72,7 +85,7 @@ end
 
 
 namespace :passenger do
-  desc "Restart Application"  
+  desc "Restart passenger server"  
   task :restart do  
     run "touch #{current_path}/tmp/restart.txt"  
   end
@@ -80,15 +93,19 @@ end
 
 
 
-after "deploy:stop", "delayed_job:stop"
-after "deploy:start", "delayed_job:restart"
-after "deploy:start", "passenger:restart"
+before "deploy", "whenever:clear"
+before "deploy", "dj:stop"
 
-after "deploy:restart", "delayed_job:restart"
+
+after "deploy", "whenever:add"
+after "deploy", "dj:start"
+after "deploy", "passenger:restart"
+
+
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
-# after "deploy:start", "whenever:add"
 
-# git ad . && git ci -am 'fix time start dj' && git psh
+
+# git ad . && git ci -am 'fix' && git psh
 
 
 

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+<meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+        <title>D3 Russian map</title>
+
+<p><a href="/dj_mon">DJ_Mon</a></p>
+<p><a href="/respond_log">Журнал</a></p>
+<p><a href="/statistic/index">Статистика в цифрах</a></p>
+
+   <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+   <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+   <style type="text/css">
+
+
+
+    body {
+      
+    background-image: url("bg.gif"); 
+    }
+
+
+  .layout {
+    width: 1100px; /* Ширина макета */
+    margin: auto; /* Выравниваем по центру */
+    /*border: 1px solid #00f; /* Параметры рамки *//*/
+    /*background: url(bg.gif) 100% 100% no-repeat;*/
+   }
+
+
+    .wrap { padding: 10px 10px 70px; }
+
+    #header {
+ align:"center";
+  /*padding-top: 10px;*/
+  z-index: 1;
+}
+  #header {
+    width: 410px; 
+    position: relative; 
+    left: 50%; 
+    margin-left: -235px; 
+    margin-top: 30px;
+    padding: 5px;
+    background: #f2eebb url("bg_yellow.png");
+    text-align: center;
+    position: relative;
+    -moz-box-shadow: inset 0 18px 34px rgba(255, 255, 255, 0.2);
+    -webkit-box-shadow: inset 0 18px 34px rgba(255, 255, 255, 0.2);
+    -o-box-shadow: inset 0 18px 34px rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 18px 34px rgba(255, 255, 255, 0.2); }
+    #header .innerHeader {
+      border: dashed 2px #cfca9c;
+      padding: 7px 7px 7px; }
+    #header h1 {
+      font-family: "Ubuntu", sans-serif;
+      font-size: 18px;
+      text-transform: uppercase;
+      color: #706d48;
+      line-height: 1.2; }
+    #header img.headerLeft, #header img.headerRight {
+      position: absolute;
+      bottom: -12px; }
+    #header img.headerLeft {
+      left: -80px; }
+    #header img.headerRight {
+      right: -80px; }
+
+    .map{
+         min-height: 650px; /* Минимальная высота */
+         position: relative; 
+        margin-top: -100px;
+        padding-top: 50px; /* Поле слева */
+      }
+
+  </style>
+
+
+    </head>
+    <body>
+      <div class="layout">
+        <div class="wrap">  
+
+<div id="header">
+        <div class="innerHeader">
+          <h1>Россия</h1>
+        </div>
+      
+        <img src="bg_headerleft.png" class="headerLeft">
+        <img src="bg_headerright.png" class="headerRight">
+      </div>
+
+
+        <div class="map"></div>
+
+      <script src="map.json" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+  
+      var w = 1060;
+      var h = 610;
+      var svg = d3.select(".map")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+        svg.append("defs")
+        .append("pattern")
+        .attr("id", "img")
+        .attr("patternUnits", "userSpaceOnUse")
+        .attr("width", 41)
+        .attr("height", 41)
+        .append("image")
+        .attr("xlink:href", "blue.png")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("width", 41)
+        .attr("height", 41);
+
+
+
+        svg.append("defs")
+        .append("pattern")
+        .attr("id", "img2")
+        .attr("patternUnits", "userSpaceOnUse")
+        .attr("width", 42)
+        .attr("height", 42)
+        .append("image")
+        .attr("xlink:href", "red.png")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("width", 42)
+        .attr("height", 42);
+
+        svg
+        .selectAll("path")
+        .data(d3.values(dataset))
+        .enter()
+        .append("path")
+        .attr("id", function(d,i) { return  d3.keys(dataset)[i];})
+        .attr("class", function(d,i) { return  "state " + d3.keys(dataset)[i];})
+       .attr("d", function(d) { return d["d"];});
+
+
+      svg
+      .selectAll("polygon")
+      .data(d3.values(dataset))
+      .enter()
+      .append("polygon")
+     .attr("id", function(d,i) { return  d3.keys(dataset)[i];})
+        .attr("class", function(d,i) { return  "state " + d3.keys(dataset)[i];})
+       .attr("points", function(d) { return d["points"];});
+  
+      d3.selectAll('.state').on('mouseover', function() {
+      
+      d3.select(this).style("fill", "url(#img2)");
+
+
+      var state = d3.select(this).attr('id'),
+
+        msg = '<h1>' + dataset[state].label + '</h1>';
+
+      d3.select('#header').classed('hidden', false);
+      d3.select('#header .innerHeader').html(msg);
+
+    });
+
+
+      d3.selectAll('.state').on("click", function() { 
+        // d3.select(this).attr("class", "tooltip");
+        // alert(dataset[d3.select(this).attr('id')].label); 
+      });
+
+
+    svg.selectAll(".state")
+    .style("fill", "url(#img)")
+    .style("stroke-width", "1.5px").attr("stroke", "white")
+    .on("mouseout", function(){
+          d3.select(this).style("fill", "url(#img)");
+            msg = '<h1>' + 'Россия' + '</h1>';
+          d3.select('#header').classed('hidden', false);
+          d3.select('#header .innerHeader').html(msg);
+    });
+
+
+      </script>
+</div>
+</div>
+    </body>
+</html>

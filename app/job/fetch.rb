@@ -1,13 +1,19 @@
 #encoding: utf-8
 class Fetch
 
+  @@time = nil
+
   def initialize(region)
       @region=region
   end
 
   def perform
     load = Load.new(@region)
-    region_report = load.report 
+   
+    time_begin = Time.new
+      region_report = load.report 
+    @@time = Time.new - time_begin 
+
     statistic = Statistic.create(:date => DateTime.now, :region => @region)
     statistic.hashvalue = region_report 
     statistic.save
@@ -20,12 +26,13 @@ class Fetch
   end
 
   def success(job)
-    RespondLog.add(@region, DateTime.now, "success", "Выполнено")
+    RespondLog.add(@region, DateTime.now, "success", "Выполнено за #{@@time} секунд")
   end
 
   def error(job, exception)
     # Airbrake.notify(exception)
     RespondLog.add(@region, DateTime.now, "error", "Class: #{exception.class.to_s}   Message: #{exception.message.to_s}" )
+   sleep 3
   end
 
   def failure

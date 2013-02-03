@@ -31,6 +31,12 @@ describe RespondLog do
       @respondlog.status = "error"
       @respondlog.should be_valid
     end
+
+    it "should valid with region_id, responddate, message, status error attributes and time" do
+      @respondlog.status = "success"
+      @respondlog.time = "8.5659484531"
+      @respondlog.should be_valid
+    end
   end
  
   context "add record in db" do
@@ -65,7 +71,7 @@ describe RespondLog do
 
   it "should add to log" do
     before = RespondLog.all.size
-    RespondLog.add(Region.first, DateTime.now, "fail", "Long long report about response" )
+    RespondLog.add(Region.first, DateTime.now, "fail", "Long long report about response")
     (RespondLog.all.size - before).should == 1
   end
 

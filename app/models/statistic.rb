@@ -9,4 +9,12 @@ class Statistic < ActiveRecord::Base
      end
   end
 
+  def self.clear
+    Statistic.all.each do |s|
+      s.delete
+    end
+  end
+
+
+
 end

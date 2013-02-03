@@ -3,7 +3,7 @@
 Delayed::Worker.destroy_failed_jobs = true
 
 Delayed::Worker.sleep_delay = 1
-Delayed::Worker.max_attempts = 5
-Delayed::Worker.max_run_time = 15.minutes
-Delayed::Worker.read_ahead = 10
+Delayed::Worker.max_attempts = 3
+Delayed::Worker.max_run_time = 25.minutes
+Delayed::Worker.read_ahead = 1
 Delayed::Worker.delay_jobs = !Rails.env.test?

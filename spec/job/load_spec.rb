@@ -22,9 +22,13 @@ describe Region do
     @load.make_criterias.class.to_s.should == "Array"
   end
 
-  # it "shold respond by respond method " do
-  #   @load.respond({:sex=>2, :age=>20}).class.to_s.should == "Hash"
-  # end
+  it "shold respond by respond method " do
+    @load.respond({:sex=>2, :age=>20}).class.to_s.should == "Hash"
+  end
+
+  it "shold respond by respond method with zero values " do
+    @load.respond({:sex=>0, :age=>0}).class.to_s.should == "Hash"
+  end
   
 end
 

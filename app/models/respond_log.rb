@@ -9,7 +9,7 @@ class RespondLog < ActiveRecord::Base
   validates :status, :inclusion => { :in => %w(success fail error),
     :message => "%{value} is not a valid status"}
 
-  def self.add(region, date, status, message)
+  def self.add( region, date, status, message)
     RespondLog.new( :region_id => region.id, 
                     :responddate=> date,
                     :status => status,

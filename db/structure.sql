@@ -124,7 +124,8 @@ CREATE TABLE respond_logs (
     status character varying(255),
     message text,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    "time" double precision
 );
 
 
@@ -289,3 +290,5 @@ INSERT INTO schema_migrations (version) VALUES ('20121210094655');
 INSERT INTO schema_migrations (version) VALUES ('20121213114245');
 
 INSERT INTO schema_migrations (version) VALUES ('20121220070634');
+
+INSERT INTO schema_migrations (version) VALUES ('20130201140138');
