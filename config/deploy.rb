@@ -73,7 +73,7 @@ namespace :whenever do
 
   desc "whenever clear all jobs from crontab"
   task :clear, :roles => :app do
-    run "cd #{current_path} && bundle exec whenever -c" # не работает
+    run "cd #{current_path} && whenever -c"
   end
 
   desc "whenever rewrite"
