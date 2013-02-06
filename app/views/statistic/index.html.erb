@@ -2,11 +2,12 @@
 <p>Find me in app/views/statistic/index.html.erb</p>
  -->
 
+
 <% @statistic.each do |s| %>
-  <%= s.id %> </br>
+  <!-- <%= s.id %> </br>
   <%= s.date %> </br>
   <%= s.region.name %> </br>
-  <%= s.hashvalue %> </br>
+  <%= s.hashvalue %> </br> -->
+  <%= s.to_json %> </br>
   </br>
 <% end %>
-
