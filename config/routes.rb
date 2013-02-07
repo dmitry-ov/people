@@ -1,5 +1,6 @@
 People::Application.routes.draw do
   get "statistic/index"
+  get "statistic/json"
 
   # get "respond_log/log" 
 
@@ -7,7 +8,8 @@ People::Application.routes.draw do
    mount DjMon::Engine => 'dj_mon'
 
 
-   # root :to => 'respond_log#log'
+   # root :to => 'statistic#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -57,7 +59,7 @@ People::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  # root :to => 'statistic/index'
 
   # See how all your routes lay out with "rake routes"
 

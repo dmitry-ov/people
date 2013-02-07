@@ -9,6 +9,9 @@
 <p><a href="/respond_log">Журнал</a></p>
 <p><a href="/statistic/index">Статистика в цифрах</a></p>
 
+<script src="/statistic/json"></script>
+
+   
    <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
    <link href='http://fonts.googleapis.com/css?family=Ubuntu&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
@@ -187,5 +190,97 @@
       </script>
 </div>
 </div>
+
+<h4 > Распределение по полами и возрасту </h4>
+   
+<script src="/jquery.min.js"></script>
+<script src="/highcharts.js"></script>
+
+
+<div id="container" style="min-width: 400px; height: 400px; max-width: 1000px;margin: 0 auto">
+</div>
+
+<script>
+$(function () {
+    var chart,
+        categories = ['0-4', '5-9', '10-14', '15-19',
+            '20-24', '25-29', '30-34', '35-39', '40-44',
+            '45-49', '50-54', '55-59', '60-64', '65-69',
+            '70-74', '75-79', '80-84', '85-89', '90-94',
+            '95-99', '100 +'];
+    
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                type: 'bar'
+            },
+            title: {
+                text: 'Население России'
+            },
+            subtitle: {
+                text: 'Источник: http://vk.com'
+            },
+            xAxis: [{
+                categories: categories,
+                reversed: false
+            }, { // mirror axis on right side
+                opposite: true,
+                reversed: false,
+                categories: categories,
+                linkedTo: 0
+            }],
+            yAxis: {
+                title: {
+                    text: null
+                },
+                labels: {
+                    formatter: function(){
+                        return (Math.abs(this.value) / 1000000) + 'M';
+                    }
+                },
+                min: -4000000,
+                max: 4000000
+            },
+    
+            plotOptions: {
+                series: {
+                    stacking: 'normal'
+                },
+            },
+    
+            tooltip: {
+                formatter: function(){
+                    return '<b>'+ this.series.name +', возраст '+ this.point.category +'</b><br/>'+
+                        'Численность: '+ Highcharts.numberFormat(Math.abs(this.point.y), 0);
+                }
+            },
+    
+            series: [{
+                name: 'Мужчины',
+            
+                data: man
+            }, 
+
+            {
+                name: 'Женщины',
+                data: woman
+            }]
+        });
+    });
+    
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
     </body>
 </html>
