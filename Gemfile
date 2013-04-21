@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.13'
 
 # gem 'sqlite3'
 # gem 'bundle'
@@ -15,6 +15,7 @@ gem 'dj_mon'
 
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
+gem 'libv8', '~> 3.3.10.4'
 gem 'twitter-bootstrap-rails'#, :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'less-rails'
 
@@ -27,7 +28,6 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem "libv8", "~> 3.3.10.4"
   # gem 'johnson'
   gem 'uglifier', '>= 1.0.3'
 end
@@ -41,5 +41,5 @@ group :development do
 end
 
 group :test, :development do
-  gem "rspec-rails"
+  gem 'rspec-rails'
 end

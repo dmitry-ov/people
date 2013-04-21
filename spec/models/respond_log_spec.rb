@@ -12,7 +12,7 @@ describe RespondLog do
   context "status" do
     before :each do
       @respondlog = RespondLog.new
-      @respondlog.region_id = Region.first
+      @respondlog.region = Region.first
       @respondlog.responddate = DateTime.now
       @respondlog.message = "report about response... Long long message....."
     end  
@@ -42,7 +42,7 @@ describe RespondLog do
   context "add record in db" do
     before :each do
       @respondlog = RespondLog.new
-      @respondlog.region_id = Region.first
+      @respondlog.region = Region.first
       @respondlog.responddate = DateTime.now
       @respondlog.message = "report about response... Long long message....."
     end  
