@@ -8,7 +8,7 @@ People::Application.routes.draw do
    mount DjMon::Engine => 'dj_mon'
 
 
-   # root :to => 'statistic#index'
+   root :to => 'statistic#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
