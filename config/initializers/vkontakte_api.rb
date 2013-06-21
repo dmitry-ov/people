@@ -7,13 +7,13 @@ VkontakteApi.configure do |config|
   # Faraday adapter to make requests with:
   config.adapter = :net_http
   
-   config.faraday_options = { 
-     proxy: { 
-       uri:'http://fw1:8080',
-       user: 'ovcharenko',
-       password: 'g3TPdp'
-     }
-   }  
+ #  config.faraday_options = { 
+ #    proxy: { 
+ #      uri:'http://fw1:8080',
+ #      user: 'ovcharenko',
+ #      password: 'g3TPdp'
+ #    }
+ #  }  
 
   # HTTP verb for API methods (:get or :post)
   config.http_verb = :get
