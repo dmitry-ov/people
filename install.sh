@@ -1,6 +1,9 @@
 sudo apt-get install -y curl build-essential openssl libreadline6 libreadline6-dev curl libcurl4-openssl-dev git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion pkg-config
 
-curl -L https://get.rvm.io | bash -s stable
+# curl -L https://get.rvm.io | bash -s stable
+\curl -L https://get.rvm.io | bash -s -- --ignore-dotfiles
+echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
+
 rvm reload
 rvm get head
 rvm install 1.9.3
